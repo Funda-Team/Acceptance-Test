@@ -1,10 +1,19 @@
-Feature: Editar fechas de una reserva
+Feature: Comunicación interna en el hotel
 
-Scenario: Editar fechas de una reserva
-  Given El administrador selecciona una reserva existente
-  When Modifica la fecha de ingreso y/o salida
-  Then La reserva debe actualizarse con las nuevas fechas sin perder la información anterior
+  Scenario: Enviar mensaje al gerente
+    Given El administrador accede a la sección de mensajes
+    When Escribe y envía un mensaje al gerente del hotel
+    Then El gerente debe recibir la notificación del mensaje en su bandeja de entrada
 
-  Example:
-    | vista             | selección                          | resultado                                      |
-    | Reservas existentes| Modificar fechas de la reserva     | Fechas actualizadas correctamente               |
+    Example:
+      | vista                | selección                          | resultado                                              |
+      | Mensajes             | Escribir y enviar mensaje          | Gerente recibe mensaje en bandeja de entrada             |
+
+  Scenario: Ver historial de mensajes
+    Given El gerente accede al módulo de comunicación
+    When Visualiza la conversación con un administrador
+    Then Debería ver todos los mensajes enviados y recibidos con orden cronológico
+
+    Example:
+      | vista                | selección                          | resultado                                              |
+      | Módulo de mensajes   | Ver historial de mensajes          | Ver conversación con mensajes ordenados cronológicamente |
