@@ -26,22 +26,3 @@ Feature: Gestión de Identidad y Acceso (IAM)
     Example:
       | tipo de cuenta       | permisos                          | resultado                                              |
       | Gerente              | Administración de hotel           | Cuenta creada con permisos de gerente                 |
-
-  Scenario: Crear cuenta de empleado
-    Given El sistema necesita registrar un nuevo empleado
-    When Se completa el formulario de creación de cuenta de empleado
-    Then La cuenta debe crearse correctamente con los permisos de empleado
-
-    Example:
-      | tipo de cuenta       | permisos                          | resultado                                              |
-      | Empleado             | Operaciones básicas               | Cuenta creada con permisos de empleado                |
-
-  Scenario: Validar autenticación de usuarios
-    Given Un usuario intenta acceder al sistema
-    When Proporciona sus credenciales de acceso
-    Then El sistema debe validar la identidad y proporcionar acceso autorizado
-
-    Example:
-      | usuario              | credenciales                      | resultado                                              |
-      | Gerente              | Usuario y contraseña válidos      | Acceso autorizado con permisos de gerente             |
-      | Empleado             | Usuario y contraseña válidos      | Acceso autorizado con permisos de empleado            |
